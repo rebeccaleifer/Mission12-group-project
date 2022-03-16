@@ -36,7 +36,7 @@ namespace Mission12.Controllers
         {
             _appointmentContext.Add(signup);
             _appointmentContext.SaveChanges();
-            return View("Confirmation", signup);
+            return View("Index", signup);
         }
 
         public IActionResult ViewAppointments()
