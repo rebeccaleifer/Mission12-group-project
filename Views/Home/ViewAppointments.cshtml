@@ -2,7 +2,38 @@
     ViewData["Title"] = "View Appointments";
 }
 
+@model List<MakeAppointment>
+
 <div class="text-center">
     <h1 class="display-4">View Appointments Page</h1>
 </div>
 
+<table class="table table-striped table-bordered">
+
+    <thead>
+        <tr>
+            <td>Group Name</td>
+            <td>Group Size</td>
+            <td>Email</td>
+            <td>Phone</td>
+            <td>Tour Time</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var x in Model) 
+        { 
+        <tr>
+            <td>@x.GroupName</td>
+            <td>@x.GroupSize</td>
+            <td>@x.Email</td>
+            <td>@x.Phone</td>
+            <td>@x.TourTime</td>
+
+            <td><a asp-controller="Home" asp-action="Edit">Edit</a></td>
+            <td><a asp-controller="Home" asp-action="Delete">Delete</a></td>
+        </tr>
+        }
+    </tbody>
+
+</table>

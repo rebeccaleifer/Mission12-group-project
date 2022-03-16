@@ -19,8 +19,15 @@ namespace Mission12.Models
         //[Required]
         public string Email { get; set; }
         public string Phone { get; set; }
-        public string TourTime { get; set; }
 
+        // In a different table
+        //Build FK relationship
+        public int TourTimeId { get; set; }
+        public TourTime TourTime { get; set; }
+
+
+        //public int TourTimeId { get; set; }
+        //public TourTime TourTime { get; set; }
 
         //REQUIREMENTS!!
         //Name of Group

@@ -11,12 +11,10 @@ namespace Mission12.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private AppointmentContext _appointmentContext { get; set; }
 
-        public HomeController(ILogger<HomeController> logger, AppointmentContext x)
+        public HomeController(AppointmentContext x)
         {
-            _logger = logger;
             _appointmentContext = x;
         }
 
@@ -28,6 +26,7 @@ namespace Mission12.Controllers
         [HttpGet]
         public IActionResult Signup()
         {
+            ViewBag.Appointments = _appointmentContext.responses.ToList();
             return View();
         }
 
@@ -41,7 +40,10 @@ namespace Mission12.Controllers
 
         public IActionResult ViewAppointments()
         {
-            return View();
+            var x = _appointmentContext.responses
+                .OrderBy(x=> x.AppointmentId)
+                .ToList();
+            return View(x);
         }
 
         public IActionResult EditAppointments()
@@ -54,10 +56,15 @@ namespace Mission12.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Edit()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View("Signup");
         }
+
+        public IActionResult Delete()
+        {
+            return View();
+        }
+
     }
 }
