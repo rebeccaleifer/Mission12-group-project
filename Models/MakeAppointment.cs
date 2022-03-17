@@ -14,7 +14,7 @@ namespace Mission12.Models
         [Required]
         public string GroupName { get; set; }
         [Required]
-        [MaxLength(15)]
+        //[MaxLength(15)]
         public int GroupSize { get; set; }
         [Required]
         public string Email { get; set; }

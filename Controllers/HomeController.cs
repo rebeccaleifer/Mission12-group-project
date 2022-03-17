@@ -99,8 +99,8 @@ namespace Mission12.Controllers
             _appointmentContext.responses.Remove(appointment);
             _appointmentContext.SaveChanges();
 
-            //return RedirectToAction("ViewAppointments");
-            return View("Index");
+            return RedirectToAction("ViewAppointments");
+            //return View("Index");
 
         }
 
