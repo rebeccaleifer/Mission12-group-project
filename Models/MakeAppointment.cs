@@ -11,12 +11,12 @@ namespace Mission12.Models
         [Key]
         [Required]
         public int AppointmentId { get; set; }
-        //[Required]
+        [Required]
         public string GroupName { get; set; }
-        //[Required]
-        //[MaxLength(15)]
+        [Required]
+        [MaxLength(15)]
         public int GroupSize { get; set; }
-        //[Required]
+        [Required]
         public string Email { get; set; }
         public string Phone { get; set; }
 
@@ -24,10 +24,6 @@ namespace Mission12.Models
         //Build FK relationship
         public int TourTimeId { get; set; }
         public TourTime TourTime { get; set; }
-
-
-        //public int TourTimeId { get; set; }
-        //public TourTime TourTime { get; set; }
 
         //REQUIREMENTS!!
         //Name of Group

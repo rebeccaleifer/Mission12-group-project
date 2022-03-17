@@ -10,6 +10,7 @@
 
 <div>
     <form method="post">
+        <div asp-validation-summary="All"></div>
         <label asp-for="GroupName">Group Name:</label>
         <input asp-for="GroupName" /><br />
 
@@ -19,13 +20,13 @@
         <label asp-for="Email">Email:</label>
         <input asp-for="Email" /><br />
 
-        <label asp-for="Email">Phone:</label>
+        <label asp-for="Phone">Phone:</label>
         <input asp-for="Phone" /><br />
 
 
         @* FIX THIS!! This should already be populated with the time that the user input *@
-        <label asp-for="Phone">Tour Time:</label>
-        <input asp-for="TourTime" /><br />
+        <label asp-for="TourTimeId">Tour Time:</label>
+        <input asp-for="TourTimeId"/><br />
 
         <button type="submit">Submit</button>
     </form>

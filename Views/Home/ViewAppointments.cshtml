@@ -30,8 +30,8 @@
             <td>@x.Phone</td>
             <td>@x.TourTime</td>
 
-            <td><a asp-controller="Home" asp-action="Edit">Edit</a></td>
-            <td><a asp-controller="Home" asp-action="Delete">Delete</a></td>
+            <td><a asp-controller="Home" asp-action="Edit" asp-route-appointmentid="@x.AppointmentId">Edit</a></td>
+            <td><a asp-controller="Home" asp-action="Delete" asp-route-appointmentid="@x.AppointmentId">Delete</a></td>
         </tr>
         }
     </tbody>
