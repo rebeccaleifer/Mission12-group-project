@@ -43,14 +43,15 @@
                 {
                     @if (t.Taken == false)
                     {
-                        <option class="dropdown-item" value="@t.TourTimeId">@t.Time</option>
+                        <option  value="@t.TourTimeId">@t.Time</option>
                     }
                     else
                     {
-                        <option class="dropdown-item disabled" value="@t.TourTimeId">@t.Time</option>
+                        <option value="@t.TourTimeId" disabled>@t.Time</option>
                     }
                 }
             </select>
+            <input asp-for="TourTime.Taken"  type="hidden"/>
         </div>
 
         <button type="submit" class="form__button">
