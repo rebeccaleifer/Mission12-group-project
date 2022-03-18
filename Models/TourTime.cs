@@ -12,5 +12,6 @@ namespace Mission12.Models
         [Required]
         public int TourTimeId { get; set; }
         public string Time { get; set; }
+        public bool Taken { get; set; }
     }
 }
