@@ -4,36 +4,42 @@
 
 @model List<MakeAppointment>
 
-<div class="text-center">
-    <h1 class="display-4">View Appointments Page</h1>
-</div>
+    <body style="background-image: url(../../img/blue1.jpg); background-repeat: no-repeat;
+          background-position: center; margin-bottom: 70px; clear: both;">
+        <div class="text-center">
+            <h1 class="display-4">View Appointments</h1>
+        </div>
+        <div style="overflow-y: auto;">
+            <table class="table table-striped table-bordered">
 
-<table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <td><b>Group Name</b></td>
+                        <td><b>Group Size</b></td>
+                        <td><b>Email</b></td>
+                        <td><b>Phone</b></td>
+                        <td><b>Tour Time</b></td>
+                    </tr>
+                </thead>
 
-    <thead>
-        <tr>
-            <td>Group Name</td>
-            <td>Group Size</td>
-            <td>Email</td>
-            <td>Phone</td>
-            <td>Tour Time</td>
-        </tr>
-    </thead>
+                <tbody>
+                    @foreach (var x in Model)
+                    {
+                        <tr>
+                            <td>@x.GroupName</td>
+                            <td>@x.GroupSize</td>
+                            <td>@x.Email</td>
+                            <td>@x.Phone</td>
+                            <td>@x.TourTime</td>
 
-    <tbody>
-        @foreach (var x in Model) 
-        { 
-        <tr>
-            <td>@x.GroupName</td>
-            <td>@x.GroupSize</td>
-            <td>@x.Email</td>
-            <td>@x.Phone</td>
-            <td>@x.TourTime</td>
+                            <td><a asp-controller="Home" asp-action="Edit" asp-route-appointmentid="@x.AppointmentId"
+                                   class="btn btn-warning btn-sm">Edit</a></td>
+                            <td><a asp-controller="Home" asp-action="Delete" asp-route-appointmentid="@x.AppointmentId"
+                                   class="btn btn-danger btn-sm">Delete</a></td>
+                        </tr>
+                    }
+                </tbody>
 
-            <td><a asp-controller="Home" asp-action="Edit" asp-route-appointmentid="@x.AppointmentId">Edit</a></td>
-            <td><a asp-controller="Home" asp-action="Delete" asp-route-appointmentid="@x.AppointmentId">Delete</a></td>
-        </tr>
-        }
-    </tbody>
-
-</table>
+            </table>
+        </div>
+    </body>

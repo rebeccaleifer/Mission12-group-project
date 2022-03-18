@@ -3,12 +3,15 @@
 }
 @model MakeAppointment
 
-<h2>Confirm Cancellation</h2>
-<h3>Are you sure you want to cancel this appointment?</h3>
+<body style="background-image: url(../../img/blue2.jpg); background-repeat: no-repeat; background-position: center;">
 
-<form method="post" asp-controller="Home" asp-action="Delete">
-    <button type="submit">Delete</button>
-    <a asp-controller="Home" asp-action="ViewAppointments" class="btn btn-primary">Cancel</a>
+    <h2>Confirm Cancellation</h2>
+    <h3>Are you sure you want to cancel this appointment?</h3>
 
-    <input type="hidden" asp-for="AppointmentId"/>
-</form>
+    <form method="post" asp-controller="Home" asp-action="Delete">
+        <button type="submit" class="btn btn-danger btn-md">Delete</button>
+        <a asp-controller="Home" asp-action="ViewAppointments" class="btn btn-primary">Go Back</a>
+
+        <input type="hidden" asp-for="AppointmentId" />
+    </form>
+</body>
