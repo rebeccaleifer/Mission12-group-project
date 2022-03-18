@@ -1,6 +1,20 @@
 ﻿/*Custom CSS*/
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
 
+#header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+#footer {
+    /*    position: fixed;*/
+    bottom: 0;
+    display: inline-block;
+    margin-top: 2%;
+    width: 100%;
+}
+
 :root{
     --first-color: #1A73E8;
     --input-color: #80868B;
@@ -34,7 +48,7 @@ h1{
     width: 360px;
     padding: 2rem 2rem;
     border-radius: 1rem;
-    box-shadow: 0 10px 25px rgba(92,99,105,.2);
+    box-shadow: 0 10px 25px rgba(92,99,105,.2);    
 }
 .form__title{
     font-weight: 400;

@@ -7,42 +7,45 @@
 <body style="background-image: url(../../img/blue1.jpg); background-repeat: no-repeat; background-position: center;">
     <br /><br /><br /><br />
 
-@*Signup Form*@
-<div class="l-form">
-    <form method="post" action="" class="form">
-        <h1 class="form__title">Signup Form</h1>
+    @*Signup Form*@
+    <div class="l-form" style="margin: 70px;">
+        <form method="post" action="" class="form">
+            <h1 class="form__title">Signup Form</h1>
 
-        <div asp-validation-summary="All">
-            <div class="form__div">
-                <input class="form__input" placeholder=" " asp-for="GroupName" />
-                <label class="form__label" asp-for="GroupName">Group Name</label>
+            <div asp-validation-summary="All">
+                <div class="form__div">
+                    <input class="form__input" placeholder=" " asp-for="GroupName" />
+                    <label class="form__label" asp-for="GroupName">Group Name</label>
+                </div>
+
+                <div class="form__div">
+                    <input class="form__input1" placeholder=" " asp-for="GroupSize" min="1" max="15" />
+                    <label class="form__label1" asp-for="GroupSize">Group Size (Max 15)</label>
+                </div>
+
+                <div class="form__div">
+                    <input class="form__input2" placeholder=" " asp-for="Email" />
+                    <label class="form__label2" asp-for="Email">Email</label>
+                </div>
+
+                <div class="form__div">
+                    <input class="form__input3" placeholder=" " asp-for="Phone" />
+                    <label class="form__label3" asp-for="Phone">Phone</label>
+                </div>
+
+                @* FIX THIS!! This should already be populated with the time that the user input *@
+                <div class="form__div">
+                    <input class="form__input4" placeholder=" " asp-for="TourTimeId" />
+                    <label class="form__label4" asp-for="TourTimeId">Tour Time</label>
+                </div>
+
+                <button type="submit" class="form__button">
+                    Submit
+                </button>
             </div>
-
-            <div class="form__div">
-                <input class="form__input1" placeholder=" " asp-for="GroupSize" min="1" max="15" />
-                <label class="form__label1" asp-for="GroupSize">Group Size (Max 15)</label>
-            </div>
-
-            <div class="form__div">
-                <input class="form__input2" placeholder=" " asp-for="Email" />
-                <label class="form__label2" asp-for="Email">Email</label>
-            </div>
-
-            <div class="form__div">
-                <input class="form__input3" placeholder=" " asp-for="Phone" />
-                <label class="form__label3" asp-for="Phone">Phone</label>
-            </div>
-
-            @* FIX THIS!! This should already be populated with the time that the user input *@
-            <div class="form__div">
-                <input class="form__input4" placeholder=" " asp-for="TourTimeId" />
-                <label class="form__label4" asp-for="TourTimeId">Tour Time</label>
-            </div>
-
-            <button type="submit" class="form__button">
-                Submit
-            </button>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
 </body>
+<br />
+<br />
+<br />
