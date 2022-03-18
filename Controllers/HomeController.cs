@@ -59,11 +59,6 @@ namespace Mission12.Controllers
             return View(x);
         }
 
-        public IActionResult EditAppointments()
-        {
-            return View();
-        }
-
         public IActionResult Calendar()
         {
             return View();
