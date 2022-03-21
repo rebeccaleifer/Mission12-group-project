@@ -25,9 +25,10 @@ namespace Mission12.Controllers
         }
 
         [HttpGet]
-        public IActionResult Signup()
+        public IActionResult Signup(int tourtimeid)
         {
             ViewBag.Appointments = _appointmentContext.tourtimes.ToList();
+            _appointmentContext.tourtimes.Where(c => c.TourTimeId == tourtimeid).FirstOrDefault().Taken = true;
             return View();
         }
 
@@ -36,6 +37,8 @@ namespace Mission12.Controllers
         {
             if (ModelState.IsValid)
             {
+                _appointmentContext.tourtimes.Where(c => c.TourTimeId == signup.TourTimeId).FirstOrDefault().Taken = true;
+
                 _appointmentContext.Add(signup);
                 _appointmentContext.SaveChanges();
 
@@ -63,6 +66,7 @@ namespace Mission12.Controllers
         {
             return View();
         }
+
         [HttpGet]
         public IActionResult Edit(int appointmentid)
         {

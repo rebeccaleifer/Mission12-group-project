@@ -34,26 +34,6 @@
             <label class="form__label3" asp-for="Phone">Phone</label>
         </div>
 
-        @* FIX THIS!! This should already be populated with the time that the user input *@
-        <div class="form__div">
-            <label  asp-for="TourTimeId">Tour Time</label>
-            <select class="form__input4" placeholder=" " asp-for="TourTimeId">
-                <option value="">Select a Time</option>
-                @foreach (TourTime t in ViewBag.Appointments)
-                {
-                    @if (t.Taken == false)
-                    {
-                        <option  value="@t.TourTimeId">@t.Time</option>
-                    }
-                    else
-                    {
-                        <option value="@t.TourTimeId" disabled>@t.Time</option>
-                    }
-                }
-            </select>
-            <input asp-for="TourTime.Taken"  type="hidden"/>
-        </div>
-
         <button type="submit" class="form__button">
             Submit
         </button>
