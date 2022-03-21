@@ -64,6 +64,7 @@ namespace Mission12.Controllers
 
         public IActionResult Calendar()
         {
+            ViewBag.Appointments = _appointmentContext.tourtimes.ToList();
             return View();
         }
 
