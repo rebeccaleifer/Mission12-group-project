@@ -205,8 +205,8 @@ h1{
     z-index: 10;
 }
 .form__button{
-    display: block;
-    margin-left: auto;
+    display: inline-flex;
+/*    margin-left: auto;*/
     padding: .75rem 2rem;
     outline: none;
     border: none;
@@ -217,7 +217,23 @@ h1{
     cursor: pointer;
     transition: .3s;
 }
+.form__button1 {
+    display: inline-flex;
+/*    margin-right: auto;*/
+    padding: .75rem 2rem;
+    outline: none;
+    border: none;
+    background-color: #EEC55D;
+    color: black;
+    font-size: var(--normal-font-size);
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: .3s;
+}
 .form__button:hover{
+    box-shadow: 0 10px 36px rgba(0,0,0,.15);
+}
+.form__button1:hover {
     box-shadow: 0 10px 36px rgba(0,0,0,.15);
 }
 
