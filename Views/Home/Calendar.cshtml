@@ -29,7 +29,7 @@
                     }
                     @if (t.Taken == false)
                     {
-                        <a asp-controller="Home" asp-action="Signup" asp-route-tourtimeid="@t.TourTimeId" style="width: 93px;" class="btn btn-outline-primary">@Hour</a>
+                        <a asp-controller="Home" asp-action="Signup" asp-route-tourtimeid="@t.TourTimeId" style="width: 100px;" class="btn btn-outline-primary">@Hour</a>
                         @if ((t.TourTimeId % 13 % 7) == 0)
                         {
                             <br /><br />
@@ -41,7 +41,7 @@
                     }
                     else
                     {
-                        <a asp-controller="Home" asp-action="Signup" asp-route-tourtimeid="@t.TourTimeId" style="width: 93px;" class="btn btn-outline-secondary disabled">@Hour</a>
+                        <a asp-controller="Home" asp-action="Signup" asp-route-tourtimeid="@t.TourTimeId" style="width: 100px;" class="btn btn-outline-secondary disabled">@Hour</a>
                         @if ((t.TourTimeId % 13 % 7) == 0)
                         {
                             <br /><br />
