@@ -151,6 +151,7 @@ h1{
     padding: 1rem;
     background: none;
     z-index: 1;
+    cursor: default;
 }
 .form__label {
     position: absolute;
@@ -194,13 +195,14 @@ h1{
 }
 .form__label4 {
     position: absolute;
-    left: 1rem;
-    top: 1rem;
+    top: -.5rem;
+    left: .8rem;
     padding: 0 .25rem;
     background-color: #F0F9FD;
     color: var(--input-color);
-    font-size: var(--normal-font-size);
+    font-size: var(--small-font-size);
     transition: .3s;
+    z-index: 10;
 }
 .form__button{
     display: block;
