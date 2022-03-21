@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
 
 #header {
-    position: fixed;
+/*    position: fixed;*/
     top: 0;
     width: 100%;
 }
@@ -13,6 +13,29 @@
     display: inline-block;
     margin-top: 2%;
     width: 100%;
+}
+
+.flex-container{
+    display: flex;
+}
+
+.flex-child{
+    flex: 1;
+    padding: 5px;
+}
+
+.flex-child:first-child{
+    margin-right: 20px;
+}
+
+.form1 {
+    width: 940px;
+    padding: 2rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(92,99,105,.2);
+    background-color: white;
+    opacity: 0.825;
+    margin: 0 auto;
 }
 
 :root{
