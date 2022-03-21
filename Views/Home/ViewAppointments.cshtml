@@ -34,7 +34,7 @@
 
                             <td><a asp-controller="Home" asp-action="Edit" asp-route-appointmentid="@x.AppointmentId"
                                    class="btn btn-warning btn-sm">Edit</a></td>
-                            <td><a asp-controller="Home" asp-action="Delete" asp-route-appointmentid="@x.AppointmentId"
+                            <td><a asp-controller="Home" asp-action="Delete" asp-route-appointmentid="@x.AppointmentId" asp-route-tourtimeid="@x.TourTimeId"
                                    class="btn btn-danger btn-sm">Delete</a></td>
                         </tr>
                     }

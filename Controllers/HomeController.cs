@@ -86,7 +86,7 @@ namespace Mission12.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(int appointmentid)
+        public IActionResult Delete(int appointmentid, int tourtimeid)
         {
             var appointment = _appointmentContext.responses.Single(x => x.AppointmentId == appointmentid);
 
@@ -96,6 +96,8 @@ namespace Mission12.Controllers
         [HttpPost]
         public IActionResult Delete(MakeAppointment appointment)
         {
+            _appointmentContext.tourtimes.Where(c => c.TourTimeId == appointment.TourTimeId).FirstOrDefault().Taken = false;
+
             _appointmentContext.responses.Remove(appointment);
             _appointmentContext.SaveChanges();
 
