@@ -20,10 +20,17 @@
             <div class="flex-child">
                 @foreach (TourTime t in ViewBag.Appointments)
                 {
+                    string[] tokens = t.Time.Split(' ');
+                    string Hour = tokens[1] + " " + tokens[2];
+                    @if (((t.TourTimeId - 1) % 13) == 0)
+                    {
+                        string DayOfWeek = tokens[0];
+                        <h4>@DayOfWeek</h4>
+                    }
                     @if (t.Taken == false)
                     {
-                        <a asp-controller="Home" asp-action="Signup" asp-route-tourtimeid="@t.TourTimeId" style="width: 93px;" class="btn btn-outline-primary">@t.Time</a>
-                        @if ((t.TourTimeId % 13 % 4) == 0)
+                        <a asp-controller="Home" asp-action="Signup" asp-route-tourtimeid="@t.TourTimeId" style="width: 93px;" class="btn btn-outline-primary">@Hour</a>
+                        @if ((t.TourTimeId % 13 % 7) == 0)
                         {
                             <br /><br />
                         }
@@ -34,8 +41,8 @@
                     }
                     else
                     {
-                        <a asp-controller="Home" asp-action="Signup" asp-route-tourtimeid="@t.TourTimeId" style="width: 93px;" class="btn btn-outline-secondary disabled">@t.Time</a>
-                        @if ((t.TourTimeId % 13 % 4) == 0)
+                        <a asp-controller="Home" asp-action="Signup" asp-route-tourtimeid="@t.TourTimeId" style="width: 93px;" class="btn btn-outline-secondary disabled">@Hour</a>
+                        @if ((t.TourTimeId % 13 % 7) == 0)
                         {
                             <br /><br />
                         }
