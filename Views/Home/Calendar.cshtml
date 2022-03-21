@@ -17,18 +17,34 @@
 
     <form method="post" action="" class="form1">
         <div class="flex-container">
-            @foreach (TourTime t in ViewBag.Appointments)
-            {
-                @if (t.Taken == false)
-                {
-                    <a asp-controller="Home" asp-action="Signup" asp-route-tourtimeid="@t.TourTimeId" style="width: 93px;" class="btn btn-outline-primary">@t.Time</a>
-                }
-                else
-                {
-                    <a asp-controller="Home" asp-action="Signup" asp-route-tourtimeid="@t.TourTimeId" style="width: 93px;" class="btn btn-outline-secondary disabled">@t.Time</a>
-                }
-            }
             <div class="flex-child">
+                 @foreach (TourTime t in ViewBag.Appointments) { 
+                    @if (t.Taken == false) { 
+                        <a asp-controller="Home" asp-action="Signup" asp-route-tourtimeid="@t.TourTimeId" style="width: 93px;" class="btn btn-outline-primary">@t.Time</a>
+                        @if ((t.TourTimeId % 13 % 4) == 0)
+                        {
+                            @: <br /><br />
+                        }
+                        else
+                        {
+                            @: &nbsp;
+                        }
+                    }
+                    else
+                    {
+                        <a asp-controller="Home" asp-action="Signup" asp-route-tourtimeid="@t.TourTimeId" style="width: 93px;" class="btn btn-outline-secondary disabled">@t.Time</a>
+                        @if ((t.TourTimeId % 13 % 4) == 0)
+                        {
+                            @: <br /><br />
+                        }
+                        else
+                        {
+                            @: &nbsp;
+                        }
+                    }
+                  }
+            </div>
+            @*<div class="flex-child">
                 <h4>Monday</h4>
                 <a asp-controller="Home" asp-action="Signup" asp-route-tourtimeid="1" style="width: 93px;" class="btn btn-outline-secondary" disabled>8:00 AM</a>
                 &nbsp;
@@ -263,7 +279,7 @@
                 <br /><br />
                 <button class="btn btn-outline-primary" id="1" style="width: 93px;">8:00 PM</button>
             </div>
-        </div>
+        </div>*@
     </form>
     <br /><br /><br /><br /><br />
 
