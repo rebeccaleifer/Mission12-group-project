@@ -1,4 +1,5 @@
 ﻿@{
+    ViewData["Title"] = "Signup";
 }
 
 
@@ -7,32 +8,16 @@
 
         <h1 class="display-4" style="margin: 70px;">Select a Time Slot</h1>
     </div>
-    <p>
-        This page will display the available times. Ignore the time slots on the
-        SignUpGenius page. For our purposes, we will say the tours occur every hour on the
-        hour from 8:00 am – 8:00 pm (i.e. the last tour starts at 8:00 pm.) Once the user selects a
-        time, they are routed to a form that has the date info set, but allows the user to enter their
-        info.
-    </p>
 
-    <form method="post" action="" class="form1">
+    <form method="post" action="" class="form1" style="width: 700px;">
         <div class="flex-container">
-            <div class="flex-child">
-                @foreach (TourTime t in ViewBag.Appointments)
-                {
-                    string[] tokens = t.Time.Split(' ');
-                    string Hour = tokens[1] + " " + tokens[2];
-                    @if (((t.TourTimeId - 1) % 13) == 0)
-                    {
-                        string DayOfWeek = tokens[0];
-                        <h4>@DayOfWeek</h4>
-                    }
-                    @if (t.Taken == false)
-                    {
-                        <a asp-controller="Home" asp-action="Signup" asp-route-tourtimeid="@t.TourTimeId" style="width: 100px;" class="btn btn-outline-primary">@Hour</a>
-                        @if ((t.TourTimeId % 13 % 7) == 0)
+            <div style="justify-content: center; align-items: center; margin: auto; justify-items: center; align-content: center; text-align: center;">
+                 @foreach (TourTime t in ViewBag.Appointments) { 
+                    @if (t.Taken == false) { 
+                        <a asp-controller="Home" asp-action="Signup" asp-route-tourtimeid="@t.TourTimeId" style="width: 103px; text-align: center; glyph-orientation-horizontal: inherit; vertical-align: middle;" class="btn btn-outline-primary">@t.Time</a>
+                        @if ((t.TourTimeId % 13 % 5) == 0)
                         {
-                            <br /><br />
+                            @: <br /><br />
                         }
                         else
                         {
@@ -41,256 +26,20 @@
                     }
                     else
                     {
-                        <a asp-controller="Home" asp-action="Signup" asp-route-tourtimeid="@t.TourTimeId" style="width: 100px;" class="btn btn-outline-secondary disabled">@Hour</a>
-                        @if ((t.TourTimeId % 13 % 7) == 0)
+                        <a asp-controller="Home" asp-action="Signup" asp-route-tourtimeid="@t.TourTimeId" style="width: 103px; text-align: center; glyph-orientation-horizontal: inherit; vertical-align: middle;" class="btn btn-outline-secondary disabled">@t.Time</a>
+                        @if ((t.TourTimeId % 13 % 5) == 0)
                         {
-                            <br /><br />
+                            @: <br /><br />
                         }
                         else
                         {
                             @: &nbsp;
                         }
                     }
-                }
+                  }
             </div>
-            @*<div class="flex-child">
-                <h4>Monday</h4>
-                <a asp-controller="Home" asp-action="Signup" asp-route-tourtimeid="1" style="width: 93px;" class="btn btn-outline-secondary" disabled>8:00 AM</a>
-                &nbsp;
-                <a asp-controller="Home" asp-action="Signup" asp-route-tourtimeid="2" style="width: 93px;" class="btn btn-outline-primary" disabled>9:00 AM</a>
-                &nbsp;
-                <a asp-controller="Home" asp-action="Signup" asp-route-tourtimeid="3" class="btn btn-outline-primary">10:00 AM</a>
-                &nbsp;
-                <a asp-controller="Home" asp-action="Signup" asp-route-tourtimeid="4" class="btn btn-outline-primary">11:00 AM</a>
-                <br /><br />
-                <a asp-controller="Home" asp-action="Signup" asp-route-tourtimeid="5" class="btn btn-outline-primary">12:00 AM</a>
-                &nbsp;
-                <a asp-controller="Home" asp-action="Signup" asp-route-tourtimeid="6" style="width: 93px;" class="btn btn-outline-primary">1:00 AM</a>
-                &nbsp;
-                <a asp-controller="Home" asp-action="Signup" asp-route-tourtimeid="7" style="width: 93px;" class="btn btn-outline-primary">2:00 AM</a>
-                &nbsp;
-                <a asp-controller="Home" asp-action="Signup" asp-route-tourtimeid="8" style="width: 93px;" class="btn btn-outline-primary">3:00 AM</a>
-                <br /><br />
-                <a asp-controller="Home" asp-action="Signup" asp-route-tourtimeid="9" style="width: 93px;" class="btn btn-outline-primary">4:00 AM</a>
-                <br /><br />
-                <button class="btn btn-outline-secondary" id="1" style="width: 93px;" disabled>8:00 AM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="2" style="width: 93px;" disabled>9:00 AM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="3">10:00 AM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="4">11:00 AM</button>
-                <br /><br />
-                <button class="btn btn-outline-primary" id="5">12:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="6" style="width: 93px;">1:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="7" style="width: 93px;">2:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="8" style="width: 93px;">3:00 PM</button>
-                <br /><br />
-                <button class="btn btn-outline-primary" id="9" style="width: 93px;">4:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="10" style="width: 93px;">5:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="11" style="width: 93px;">6:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="12" style="width: 93px;">7:00 PM</button>
-                <br /><br />
-                <button class="btn btn-outline-primary" id="13" style="width: 93px;">8:00 PM</button>
-            </div>
-
-            <div class="flex-child">
-                <h4>Tuesday</h4>
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">8:00 AM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">9:00 AM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1">10:00 AM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1">11:00 AM</button>
-                <br /><br />
-                <button class="btn btn-outline-primary" id="1">12:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">1:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">2:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">3:00 PM</button>
-                <br /><br />
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">4:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">5:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">6:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">7:00 PM</button>
-                <br /><br />
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">8:00 PM</button>
-            </div>
-        </div>
-
-        <br />
-
-        <div class="flex-container">
-
-            <div class="flex-child">
-                <h4>Wednesday</h4>
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">8:00 AM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">9:00 AM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1">10:00 AM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1">11:00 AM</button>
-                <br /><br />
-                <button class="btn btn-outline-primary" id="1">12:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">1:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">2:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">3:00 PM</button>
-                <br /><br />
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">4:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">5:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">6:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">7:00 PM</button>
-                <br /><br />
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">8:00 PM</button>
-            </div>
-
-            <div class="flex-child">
-                <h4>Thursday</h4>
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">8:00 AM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">9:00 AM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1">10:00 AM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1">11:00 AM</button>
-                <br /><br />
-                <button class="btn btn-outline-primary" id="1">12:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">1:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">2:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">3:00 PM</button>
-                <br /><br />
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">4:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">5:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">6:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">7:00 PM</button>
-                <br /><br />
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">8:00 PM</button>
-            </div>
-        </div>
-
-        <br />
-
-        <div class="flex-container">
-
-            <div class="flex-child">
-                <h4>Friday</h4>
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">8:00 AM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">9:00 AM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1">10:00 AM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1">11:00 AM</button>
-                <br /><br />
-                <button class="btn btn-outline-primary" id="1">12:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">1:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">2:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">3:00 PM</button>
-                <br /><br />
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">4:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">5:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">6:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">7:00 PM</button>
-                <br /><br />
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">8:00 PM</button>
-            </div>
-
-            <div class="flex-child">
-                <h4>Saturday</h4>
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">8:00 AM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">9:00 AM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1">10:00 AM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1">11:00 AM</button>
-                <br /><br />
-                <button class="btn btn-outline-primary" id="1">12:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">1:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">2:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">3:00 PM</button>
-                <br /><br />
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">4:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">5:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">6:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">7:00 PM</button>
-                <br /><br />
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">8:00 PM</button>
-            </div>
-        </div>
-
-        <br />
-
-        <div class="flex-container">
-
-            <div class="flex-child">
-                <h4>Sunday</h4>
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">8:00 AM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">9:00 AM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1">10:00 AM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1">11:00 AM</button>
-                <br /><br />
-                <button class="btn btn-outline-primary" id="1">12:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">1:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">2:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">3:00 PM</button>
-                <br /><br />
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">4:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">5:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">6:00 PM</button>
-                &nbsp;
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">7:00 PM</button>
-                <br /><br />
-                <button class="btn btn-outline-primary" id="1" style="width: 93px;">8:00 PM</button>
-            </div>*@
         </div>
     </form>
     <br /><br /><br /><br /><br />
-
 
 </body>

@@ -75,7 +75,7 @@ namespace Mission12.Controllers
             ViewBag.Appointments = _appointmentContext.tourtimes.ToList();
             var appointment = _appointmentContext.responses.Single(x => x.AppointmentId == appointmentid);
 
-            return View("Signup", appointment);
+            return View("SignupEdit", appointment);
         }
         
         [HttpPost]

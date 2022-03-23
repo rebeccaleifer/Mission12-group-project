@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Make Appointment";
+    ViewData["Title"] = "Edit Appointment";
 }
 
 @model Mission12.Models.MakeAppointment
@@ -37,12 +37,12 @@
             <input type="hidden" asp-for="TourTimeId" />
 
             <div class="form__div">
-            <input class="form__input4" placeholder="@ViewBag.TourTime" id="tourtime" readonly />
-            <label class="form__label4" for="tourtime">Tour Time</label>
-        </div>
+                <input class="form__input4" placeholder="@Model.TourTime.Time" id="tourtime" readonly />
+                <label class="form__label4" for="tourtime">Tour Time</label>
+            </div>
 
             <div style="justify-content: center; align-content: center; align-items: center; display:flex;">
-                <button class="form__button1" asp-area="" asp-controller="Home" asp-action="Calendar">
+                <button class="form__button1" asp-area="" asp-controller="Home" asp-action="ViewAppointments">
                     Back
                 </button>&nbsp;&nbsp;&nbsp;
 
@@ -51,7 +51,7 @@
                 </button>
             </div>
         </form>
-</div>
+    </div>
 </body>
 <br />
 <br />
