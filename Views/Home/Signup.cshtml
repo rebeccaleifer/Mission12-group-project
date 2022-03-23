@@ -10,7 +10,7 @@
     @*Signup Form*@
     <div class="l-form" style="margin: 70px;">
         <form method="post" action="" class="form">
-            <h1 class="form__title">Signup Form</h1>
+            <h1 class="form__title">Signup Form for @ViewBag.TourTime</h1>
 
             <div asp-validation-summary="All"></div>
 
@@ -33,6 +33,10 @@
                 <input class="form__input3" placeholder=" " asp-for="Phone" />
                 <label class="form__label3" asp-for="Phone">Phone</label>
             </div>
+
+            <input type="hidden" asp-for="TourTimeId" />
+
+            @*<input asp-for="TourTime.Time" />*@
 
             <div style="justify-content: center; align-content: center; align-items: center; display:flex;">
                 <button class="form__button1" asp-area="" asp-controller="Home" asp-action="Calendar">

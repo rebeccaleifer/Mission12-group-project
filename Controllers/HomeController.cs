@@ -29,6 +29,7 @@ namespace Mission12.Controllers
         {
             ViewBag.Appointments = _appointmentContext.tourtimes.ToList();
             _appointmentContext.tourtimes.Where(c => c.TourTimeId == tourtimeid).FirstOrDefault().Taken = true;
+            ViewBag.TourTime = _appointmentContext.tourtimes.Where(c => c.TourTimeId == tourtimeid).Select(x => x.Time).FirstOrDefault();
             return View();
         }
 
